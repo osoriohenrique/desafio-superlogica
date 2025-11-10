@@ -76,5 +76,12 @@ module "vpc" {
 module "nginx" {
   source = "./nginx"
 
-  nginx_install = true
+  depends_on = [ module.eks ]
 }
+
+module "prometheus" {
+  source = "./prometheus"
+
+  depends_on = [ module.eks ]
+}
+
